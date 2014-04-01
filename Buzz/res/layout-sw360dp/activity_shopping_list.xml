@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_shop"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/gradient" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"/>
+
+    <TableLayout
+        android:layout_width="match_parent"  
+        android:layout_height="wrap_content"
+        android:stretchColumns="0" >
+
+     
+    </TableLayout>
+     <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:stretchColumns="0" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            
+             <ListView
+                android:id="@+id/lstShoppingLists"
+                android:layout_width="fill_parent"
+                android:layout_height="370dp" 
+                android:cacheColorHint="#00000000"
+               >
+            </ListView>
+            
+        </TableRow>
+ <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"/>
+     
+    </TableLayout>
+    
+
+</LinearLayout>
+

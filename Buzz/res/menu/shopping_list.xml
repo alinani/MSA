@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/clearshoppinglists"
+        android:icon="@drawable/clearlist"
+        android:showAsAction="ifRoom|withText"
+        android:titleCondensed="Delete"> 
+    </item>
+    
+     <item
+        android:id="@+id/newlist"
+        android:icon="@drawable/ic_shopping_list"
+        android:showAsAction="ifRoom|withText"
+        android:titleCondensed="New List"> 
+    </item>
+</menu>  

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.buzz"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="10" />
+
+    <!-- GCM connects to Google Services. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- GCM requires a Google account. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <!-- Keeps the processor from sleeping when a message is received. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Creates a custom permission so only this app can receive its messages. -->
+    <permission
+        android:name="com.example.buzz.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.buzz.permission.C2D_MESSAGE" />
+
+    <!-- This app has permission to register and receive data message. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <!-- Network State Permissions to detect Internet status -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Permission to vibrate -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
+        <activity
+            android:name="com.example.buzz.SplashActivity"
+            android:label="@string/title_activity_splash"
+            android:theme="@style/Theme.Sherlock.NoActionBar"
+            android:screenOrientation="portrait" >
+            <intent-filter android:label="@string/app_name" >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.buzz.Supermarket"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.example.buzz.MESSAGE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.buzz.Shop"
+            android:label="@string/title_activity_shop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.example.buzz.ProductCustomAdapter"
+            android:label="@string/title_activity_product_custom_adapter" >
+        </activity>
+        <activity
+            android:name="com.example.buzz.ShoppingList"
+            android:label="@string/title_activity_shopping_list" >
+        </activity>
+        <activity
+            android:name="com.example.buzz.Shoppers_List"
+            android:label="@string/title_activity_shoppers__list" >
+        </activity>
+        <activity
+            android:name="com.example.buzz.Home"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <!-- Receives the registration id. -->
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.example.buzz" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.example.buzz.GCMIntentService" />
+
+        <activity
+            android:name="com.example.buzz.BestPrice"
+            android:label="@string/title_activity_best_price"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name="com.example.buzz.CreateShoppingList"
+            android:label="@string/title_activity_create_shopping_list" >
+        </activity>
+        <activity
+            android:name="com.example.buzz.ChooseProducts"
+            android:label="@string/title_activity_choose_products"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name="com.example.buzz.CreatedListView"
+            android:label="@string/title_activity_created_list_view" >
+        </activity>
+        <activity
+            android:name="com.example.buzz.StoreCustomAdapter"
+            android:label="@string/title_activity_store_custom_adapter" >
+        </activity>
+        <activity
+            android:name="com.example.buzz.MSAActionsAdapter"
+            android:label="@string/title_activity_msaactions_adapter" >
+        </activity>
+        <activity
+            android:name="com.example.buzz.Registration"
+            android:label="@string/title_activity_registration"
+            android:noHistory="true"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.example.buzz.Promotions"
+            android:label="@string/title_activity_promotions" >
+        </activity>
+        <activity
+            android:name="com.example.buzz.Information"
+            android:label="@string/title_activity_information" >
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+      <item
+        android:id="@+id/clearlist" 
+        android:icon="@drawable/clearlist"
+        android:showAsAction="ifRoom|withText"
+        android:title="Clear List"
+        android:titleCondensed="Clear List">
+    </item>
+  
+       <item
+        android:id="@+id/add_item"
+        android:icon="@drawable/additem"
+        android:showAsAction="ifRoom|withText"
+        android:title="Add Item"
+        android:titleCondensed="Add Item">
+    </item>
+</menu>

@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/clearshoppinglists"
+        android:icon="@drawable/clearlist"
+        android:showAsAction="ifRoom|withText"
+        android:titleCondensed="Delete"> 
+    </item>
+
+</menu>

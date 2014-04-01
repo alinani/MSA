@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:stretchColumns="1" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+             <TextView
+                android:id="@+id/txtHistQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="5dp"
+                android:text="TextView"
+                android:textSize="16dp"
+                android:textColor="#1B75BB" />
+            <TextView
+                android:id="@+id/txtproductrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="5dp"
+                android:text="TextView"
+                android:textSize="16dp"
+                android:textColor="#1B75BB"
+               />
+
+            <TextView
+                android:id="@+id/textKwacha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textSize="16dp"
+                android:textColor="#1B75BB"
+                android:text="K" />
+
+            <TextView
+                android:id="@+id/textAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                 android:textSize="16dp"
+                android:textColor="#1B75BB"
+                android:text="0" />
+
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
