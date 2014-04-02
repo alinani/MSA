@@ -3,30 +3,28 @@ package com.example.buzz;
 import java.util.ArrayList;
 
 import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.ActivityNotFoundException;
-import android.content.Context;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.text.Html;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,9 +33,6 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
 public class Home extends SherlockActivity implements OnClickListener {
 
 	// Shared Preferences
@@ -45,15 +40,18 @@ public class Home extends SherlockActivity implements OnClickListener {
 
 	TextView shopname;
 	UpdatePrices update = new UpdatePrices();
-	private String SPData,dbdts,s_lTableName;
+	private String SPData, dbdts, s_lTableName;
 	ListView listviewmsa;
 	TextView ShopHeader;
+
+	
 
 	ArrayList<MSAActions> MSAACtionArray = new ArrayList<MSAActions>();
 
 	// private String PUSHBOTS_APPLICATION_ID="5218a8d14deeaecc06003302";
 
 	//
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -64,8 +62,7 @@ public class Home extends SherlockActivity implements OnClickListener {
 		setSupportProgressBarIndeterminateVisibility(true);
 		new UpdatePrices().execute();
 
-		MSAACtionArray
-				.add(new MSAActions(R.drawable.ic_goshop, "Go Shopping"));
+		MSAACtionArray.add(new MSAActions(R.drawable.ic_goshop, "Go Shopping"));
 		MSAACtionArray.add(new MSAActions(R.drawable.ic_shoppinglist,
 				"Shopping Lists"));
 		MSAACtionArray
@@ -85,11 +82,9 @@ public class Home extends SherlockActivity implements OnClickListener {
 		// retrieve from SP
 		SharedPreferences dataStore = getSharedPreferences(PREFS, 0);
 		s_lTableName = dataStore.getString("shop", "No Data Found");
-		
-		
 
 		listviewmsa = (ListView) findViewById(R.id.actionslistView);
-		ShopHeader=(TextView) findViewById(R.id.txtShopHeader);
+		ShopHeader = (TextView) findViewById(R.id.txtShopHeader);
 
 		// Listview header
 		View header = (View) getLayoutInflater().inflate(
@@ -114,31 +109,26 @@ public class Home extends SherlockActivity implements OnClickListener {
 					}
 
 				});
+
+		// Determine table to use
+		if (s_lTableName.equals("SHOPRITE")) {
+			s_lTableName = "ShopriteProducts";
+		} else if (s_lTableName.equals("SPAR")) {
+			s_lTableName = "SparProducts";
+		} else if (s_lTableName.equals("Pick n Pay")) {
+			s_lTableName = "PnPProducts";
+		} else if (s_lTableName.equals("Melisa")) {
+			s_lTableName = "MelisaProducts";
+		} else if (s_lTableName.equals("Café bonjour")) {
+			s_lTableName = "Bonjour";
+		}
 		
-		//Determine table to use
-				if(s_lTableName.equals("SHOPRITE"))
-				{
-					s_lTableName="ShopriteProducts";
-				}
-				else if(s_lTableName.equals("SPAR"))
-				{
-					s_lTableName="SparProducts";
-				}
-				else if(s_lTableName.equals("Pick n Pay"))
-				{
-					s_lTableName="PnPProducts";
-				}
-				else if(s_lTableName.equals("Melisa"))
-				{
-					s_lTableName="MelisaProducts";
-				}
-				else if(s_lTableName.equals("Café bonjour"))
-				{
-					s_lTableName="Bonjour";
-				}  
+		
+		
 
 	}
 
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -148,23 +138,20 @@ public class Home extends SherlockActivity implements OnClickListener {
 
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
 		switch (item.getItemId()) {
 		case android.R.id.home:
- 
+
 			NavUtils.navigateUpTo(this, new Intent(this, Supermarket.class));
 			break;
-		
-
 
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
-	
 	public void SelectedAction(String Action) {
 
 		if (Action.equals("Go Shopping")) {
@@ -221,31 +208,29 @@ public class Home extends SherlockActivity implements OnClickListener {
 	}
 
 	public String SyncData() {
-		
+
 		DatabaseConnector dbcon = new DatabaseConnector(this);
 		dbcon.open();
-		
-		//get date database last updated
-		  Cursor dts=dbcon.GetRegStatus();
-	      
-	        if(dts.moveToFirst())
-	        	do{
-	        		dbdts=dts.getString(dts.getColumnIndex("DbUpdateTime"));	  
-	        		
-	        	}while(dts.moveToNext());
 
-	      	        
-	       
+		// get date database last updated
+		Cursor dts = dbcon.GetRegStatus();
+
+		if (dts.moveToFirst())
+			do {
+				dbdts = dts.getString(dts.getColumnIndex("DbUpdateTime"));
+
+			} while (dts.moveToNext());
+
 		int x = 0;
 		// TODO Auto-generated method stub
 		ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
-		postParameters.add(new BasicNameValuePair("Dts",dbdts));
-		
+		postParameters.add(new BasicNameValuePair("Dts", dbdts));
+
 		String response = null;
 		try {
 
 			response = CustomHttpClient.executeHttpPost(
-					"http://41.215.180.98/SyncData.php",postParameters);
+					"http://41.215.180.98/SyncData.php", postParameters);
 
 			String res = response.toString();
 			res = res.trim();
@@ -273,7 +258,8 @@ public class Home extends SherlockActivity implements OnClickListener {
 						String l_sPrice = json_data.getString("Price");
 
 						// insert values into table
-						dbcon.UpdateProductPrices(l_sProuctId, l_sPrice,s_lTableName);
+						dbcon.UpdateProductPrices(l_sProuctId, l_sPrice,
+								s_lTableName);
 
 					}
 
@@ -291,7 +277,7 @@ public class Home extends SherlockActivity implements OnClickListener {
 
 		}
 
-		//Update the date that db has been updated
+		// Update the date that db has been updated
 		dbcon.UpdateDbUpdate();
 		dbcon.close();
 		return response;

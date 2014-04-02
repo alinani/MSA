@@ -1,39 +1,28 @@
 package com.example.buzz;
 
-import static com.example.buzz.CommonUtilities.DISPLAY_MESSAGE_ACTION;
-import static com.example.buzz.CommonUtilities.EXTRA_MESSAGE;
-import static com.example.buzz.CommonUtilities.SENDER_ID;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.AsyncTask;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.telephony.TelephonyManager;
 import android.text.Html;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.android.gcm.GCMRegistrar;
 
 public class Supermarket extends SherlockActivity {
 
@@ -43,6 +32,9 @@ public class Supermarket extends SherlockActivity {
 
 	ListView StorelistView;
 	ArrayList<Store> StoreArray = new ArrayList<Store>();
+	
+	// Alert dialog manager
+		AlertDialogManager alert = new AlertDialogManager();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -93,9 +85,47 @@ public class Supermarket extends SherlockActivity {
 
 				});
 		
+		Intent intent = new Intent(
+				"com.google.zxing.client.android.SCAN");
+		
+		// check if scanner installed
+		boolean scanstatus = isCallable(intent);
+
+		// if no scanner found download scanner
+		if (scanstatus == false) {
+			
+			AlertDialog ad = new AlertDialog.Builder(this).create();
+			ad.setCancelable(false); // This blocks the 'BACK' button
+			ad.setMessage("Barcode Scanner not detected, Click okay to download one");
+			ad.setButton("okay", new DialogInterface.OnClickListener() {
+			    @Override
+			    public void onClick(DialogInterface dialog, int which) {
+			        dialog.dismiss();  
+			        
+			        //download scanner on ok press
+			        Intent intent = new Intent();
+					intent = new Intent(
+							Intent.ACTION_VIEW,
+							Uri.parse("https://play.google.com/store/search?q=Zxing%20bar%20code%20scanner&c=apps&hl=en"));
+					startActivity(intent);
+					
+					
+			    }
+			});
+			ad.show();
+			
+		}
 		
 	}
 
+	
+	private boolean isCallable(Intent intent) {  
+        List<ResolveInfo> list = getPackageManager().queryIntentActivities(intent,   
+        PackageManager.MATCH_DEFAULT_ONLY);  
+        return list.size() > 0;  
+}
+
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

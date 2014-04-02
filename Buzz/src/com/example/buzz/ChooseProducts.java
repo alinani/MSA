@@ -64,9 +64,9 @@ public class ChooseProducts extends SherlockActivity {
 			s_lTableName = "ShopriteProducts";
 		} else if (s_lTableName.equals("SPAR")) {
 			s_lTableName = "SparProducts";
-		} else if (s_lTableName.equals("PICK n PAY")) {
+		} else if (s_lTableName.equals("Pick n Pay")) {
 			s_lTableName = "PnPProducts";
-		} else if (s_lTableName.equals("MELISA")) {
+		} else if (s_lTableName.equals("Melisa")) {
 			s_lTableName = "MelisaProducts";
 		}
 		else if(s_lTableName.equals("Café bonjour"))

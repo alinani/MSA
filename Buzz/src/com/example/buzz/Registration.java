@@ -36,7 +36,7 @@ public class Registration extends SherlockActivity implements OnClickListener {
     DatabaseConnector dbcon=new DatabaseConnector(this);
   
 	// Asyntask
-	AsyncTask<Void, Void, Void> mRegisterTask;
+	AsyncTask<Void, Void, Void> mRegisterTask;  
 
 	// Alert dialog manager
 	AlertDialogManager alert = new AlertDialogManager();
