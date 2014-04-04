@@ -192,6 +192,8 @@ public class CreatedListView extends SherlockActivity implements
 			 mMode.finish();
 			}
 		}
+		
+		
 	};
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)

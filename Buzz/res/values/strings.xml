@@ -41,5 +41,9 @@
     <string name="title_activity_registration">Registration</string>
     <string name="title_activity_promotions">Promotions</string>
     <string name="title_activity_information">Information</string>
+    <string name="title_activity_help_store">HelpStore</string>
+    <string name="title_activity_help_shopping">HelpShopping</string>
+    <string name="title_activity_help_shoppinglist">HelpShoppinglist</string>
+    <string name="title_activity_help_bestprice">HelpBestprice</string>
 
 </resources>

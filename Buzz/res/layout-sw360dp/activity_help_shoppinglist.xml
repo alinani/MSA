@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/gradient" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        android:paddingTop="5dp" >
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             android:paddingBottom="3dp"
+             android:paddingTop="6dp" >
+            <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:text="1."           
+            android:textColor="#666666"
+            android:textSize="18dp" />
+           <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap Shopping List, a list of saved shopping lists appears"
+            android:textColor="#666666"
+            android:textSize="18dp" />
+            
+        </LinearLayout>
+      
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:src="@drawable/ic_helpsavedlist" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             android:paddingBottom="3dp"
+             android:paddingTop="6dp" >
+            <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:text="2."           
+            android:textColor="#666666"
+            android:textSize="18dp" />
+         <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To create a shoppinglist tap the list icon"
+            android:textColor="#666666"
+            android:textSize="18dp" />
+            
+        </LinearLayout>
+        
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:src="@drawable/ic_helpnewlist" />
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             android:paddingBottom="3dp"
+             android:paddingTop="6dp" >
+            <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:text="3."           
+            android:textColor="#666666"
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                 android:text="Search for a product by typing the product name. To add the product to your shopping list simply tap on the product name"
+            android:textColor="#666666"
+            android:textSize="18dp" />
+            
+        </LinearLayout>
+        
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:src="@drawable/ic_helpchooseitem" />
+        
+           <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             android:paddingBottom="3dp"
+             android:paddingTop="6dp" >
+            <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:text="4."           
+            android:textColor="#666666"
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                       android:text="Tap View List to view your shopping list, which you can then Save or Share"
+            android:textColor="#666666"
+            android:textSize="18dp" />
+            
+        </LinearLayout>
+       
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:src="@drawable/ic_helpmadelist" />
+        
+    </LinearLayout>
+
+</ScrollView>
